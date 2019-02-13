@@ -35,7 +35,6 @@ namespace BlueBadge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        
         public IEnumerable<CourseListItem> GetCourses()
         {
             using (var ctx = new ApplicationDbContext())
@@ -43,7 +42,9 @@ namespace BlueBadge.Services
                 var query =
                     ctx
                     .Courses
-                    .Select(p => new CourseListItem
+                    .Select(
+                        p => 
+                            new CourseListItem
                     {
                         CourseId = p.CourseId,
                         CourseName = p.CourseName,
@@ -57,13 +58,17 @@ namespace BlueBadge.Services
             }
         }
 
-        public CourseDetail GetCourseByID(int id)
+        public CourseDetail GetCourseByID(int courseId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Courses.FirstOrDefault(p => p.CourseId == id);
-
-                var model = new CourseDetail
+                var entity =
+                    ctx
+                    .Courses
+                    .FirstOrDefault(p => p.CourseId == courseId); //&& p.PlayerId == _userId);
+                return
+              
+                    new CourseDetail
                 {
                     CourseId = entity.CourseId,
                     CourseName = entity.CourseName,
@@ -73,7 +78,7 @@ namespace BlueBadge.Services
                     CoursePar = entity.CoursePar,
                     CourseRating = entity.CourseRating
                 };
-                return model;
+            
             }
         }
         

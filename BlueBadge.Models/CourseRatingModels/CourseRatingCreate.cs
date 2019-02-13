@@ -5,20 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlueBadge.Data
+namespace BlueBadge.Models.CourseRatingModels
 {
-    public class CourseRating
+    public class CourseRatingCreate
     {
-        [Key]
-        public int CourseRatingId { get; set; }
-
         [Required]
-        public float CourseRatings { get; set; }
+        public float CourseRating { get; set; }
 
         [Required]
         public int CourseId { get; set; }
-
-        public virtual Course Course { get; set; }
-        public Guid OwnerID { get; set; }
     }
 }

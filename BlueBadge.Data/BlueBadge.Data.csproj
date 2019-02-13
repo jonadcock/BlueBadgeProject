@@ -65,7 +65,16 @@
     <Compile Include="Migrations\201902112138233_addingmigration.Designer.cs">
       <DependentUpon>201902112138233_addingmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902122014585_secondarymigrationadd.cs" />
+    <Compile Include="Migrations\201902122014585_secondarymigrationadd.Designer.cs">
+      <DependentUpon>201902122014585_secondarymigrationadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902132005583_player.cs" />
+    <Compile Include="Migrations\201902132005583_player.Designer.cs">
+      <DependentUpon>201902132005583_player.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +87,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902112138233_addingmigration.resx">
       <DependentUpon>201902112138233_addingmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902122014585_secondarymigrationadd.resx">
+      <DependentUpon>201902122014585_secondarymigrationadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902132005583_player.resx">
+      <DependentUpon>201902132005583_player.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

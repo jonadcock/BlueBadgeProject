@@ -18,9 +18,10 @@ namespace BlueBadgeProject.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CourseService(userId);
             var model = service.GetCourses();
-            return View();
+            return View(model);
         }
 
+        //GET: Course/Create
         public ActionResult Create()
         {
             return View();
@@ -30,13 +31,15 @@ namespace BlueBadgeProject.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CourseCreate model)
         {
-            if (!ModelState.IsValid) return View(model);
-
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             var service = CreateCourseService();
 
             if (service.CreateCourse(model))
             {
-                ViewBag.SaveResult = "Your course was created.";
+                TempData["SaveResult"] = "Your course was created.";
                 return RedirectToAction("Index");
             };
 
@@ -45,11 +48,87 @@ namespace BlueBadgeProject.WebMVC.Controllers
             return View(model);
         }
 
+        //GET: Courses/Detail
+        public ActionResult Detail(int id)
+        {
+            var ctx = CreateCourseService();
+            var model = ctx.GetCourseByID(id);
+
+            return View(model);
+        }
+
+        //GET: Course/Edit
+        public ActionResult Edit(int id)
+        {
+            var service = CreateCourseService();
+            var detail = service.GetCourseByID(id);
+            var model =
+                new CourseEdit
+                {
+                    CourseId = detail.CourseId,
+                    CourseName = detail.CourseName,
+                    LocationCity = detail.LocationCity,
+                    LocationState = detail.LocationState,
+                    CourseLength = detail.CourseLength,
+                    CoursePar = detail.CoursePar
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CourseEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.CourseId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateCourseService();
+
+            if (service.EditCourse(model))
+            {
+                TempData["SaveResult"] = "Your note was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your note could not be editted.");
+            return View();
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var ctx = CreateCourseService();
+            var model = ctx.GetCourseByID(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateCourseService();
+
+            service.DeleteCourse(id);
+
+            TempData["SaveResult"] = "Your course was deleted";
+
+            return RedirectToAction("Index");
+        }
+
+
         private CourseService CreateCourseService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CourseService(userId);
             return service;
         }
+
     }
 }
