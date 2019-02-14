@@ -23,12 +23,26 @@ namespace BlueBadge.Data.Migrations
                 .PrimaryKey(t => t.CourseId);
             
             CreateTable(
+                "dbo.Player",
+                c => new
+                    {
+                        PlayerId = c.Int(nullable: false, identity: true),
+                        PlayerName = c.String(nullable: false),
+                        ActiveSince = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.PlayerId);
+            
+            CreateTable(
                 "dbo.CourseRating",
                 c => new
                     {
                         CourseRatingId = c.Int(nullable: false, identity: true),
+                        PlayerId = c.Guid(nullable: false),
+                        CourseName = c.String(nullable: false),
                         CourseRatings = c.Single(nullable: false),
+                        DatePlayed = c.DateTime(nullable: false),
                         CourseId = c.Int(nullable: false),
+                        OwnerID = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.CourseRatingId)
                 .ForeignKey("dbo.Course", t => t.CourseId, cascadeDelete: true)
@@ -124,6 +138,7 @@ namespace BlueBadge.Data.Migrations
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.CourseRating");
+            DropTable("dbo.Player");
             DropTable("dbo.Course");
         }
     }

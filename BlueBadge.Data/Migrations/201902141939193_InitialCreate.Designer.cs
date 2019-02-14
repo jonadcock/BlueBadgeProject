@@ -13,7 +13,7 @@ namespace BlueBadge.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902112056012_InitialCreate"; }
+            get { return "201902141939193_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

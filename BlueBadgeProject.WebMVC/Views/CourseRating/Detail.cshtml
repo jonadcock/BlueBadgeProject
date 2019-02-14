@@ -1,0 +1,58 @@
+﻿@model BlueBadge.Models.CourseRatingModels.RatingListItem
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>RatingListItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseRatingId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseRatingId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseRatings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseRatings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatePlayed)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseRatingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

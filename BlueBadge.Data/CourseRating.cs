@@ -13,11 +13,21 @@ namespace BlueBadge.Data
         public int CourseRatingId { get; set; }
 
         [Required]
+        public Guid OwnerID { get; set; }
+
+        [Required]
+        public string CourseName { get; set; }
+
+        [Required]
         public float CourseRatings { get; set; }
+ 
+        [Required]
+        public DateTime DatePlayed { get; set; }
 
         [Required]
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
+
     }
 }

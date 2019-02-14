@@ -30,6 +30,6 @@ namespace BlueBadge.Data
             [Required]
             public int CoursePar { get; set; }
 
-            public float CourseRating { get; set; }
+            public float CourseRatings { get; set; }
     }
 }

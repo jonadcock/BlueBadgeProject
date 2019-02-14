@@ -57,15 +57,16 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseRating.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201902112056012_InitialCreate.cs" />
-    <Compile Include="Migrations\201902112056012_InitialCreate.Designer.cs">
-      <DependentUpon>201902112056012_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201902141939193_InitialCreate.cs" />
+    <Compile Include="Migrations\201902141939193_InitialCreate.Designer.cs">
+      <DependentUpon>201902141939193_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902112138233_addingmigration.cs" />
-    <Compile Include="Migrations\201902112138233_addingmigration.Designer.cs">
-      <DependentUpon>201902112138233_addingmigration.cs</DependentUpon>
+    <Compile Include="Migrations\201902142115113_update5.cs" />
+    <Compile Include="Migrations\201902142115113_update5.Designer.cs">
+      <DependentUpon>201902142115113_update5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,11 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902112056012_InitialCreate.resx">
-      <DependentUpon>201902112056012_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902141939193_InitialCreate.resx">
+      <DependentUpon>201902141939193_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902112138233_addingmigration.resx">
-      <DependentUpon>201902112138233_addingmigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902142115113_update5.resx">
+      <DependentUpon>201902142115113_update5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -36,6 +36,7 @@ namespace BlueBadge.Data
 
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseRating> Ratings { get; set; }
+        public DbSet<Player> Players { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
