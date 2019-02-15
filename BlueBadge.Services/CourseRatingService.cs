@@ -24,6 +24,7 @@ namespace BlueBadge.Services
                 CourseId = model.CourseId,
                 CourseName = model.CourseName,
                 CourseRatings = model.CourseRatings,
+                DatePlayed = model.DatePlayed,
                 OwnerID = _userId,
             };
 
@@ -39,13 +40,14 @@ namespace BlueBadge.Services
             }
         }
 
-        public IEnumerable<RatingListItem> GetRatings()
+        public IEnumerable<RatingListItem> GetRatingsByCourseId(int courseId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Ratings
+                    .Where(p => p.CourseId == courseId)
                     .Select(
                         p =>
                         new RatingListItem
@@ -55,21 +57,21 @@ namespace BlueBadge.Services
                             CourseRatings = p.CourseRatings,
                             DatePlayed = p.DatePlayed,
                         });
-                return query.ToArray();
+                return query;
             }
         }
 
-        public CourseRating GetRatingsByID(int courseId)
+        public CourseRatingDetail GetRatingsByID(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Ratings
-                    .FirstOrDefault(p => p.CourseId == courseId);
-                return
+                    .Single(p => p.CourseRatingId == id);
+                
 
-                new CourseRating
+                var model = new CourseRatingDetail
                 {
                     CourseRatingId = entity.CourseRatingId,
                     CourseName = entity.CourseName,
@@ -78,13 +80,15 @@ namespace BlueBadge.Services
                     CourseId = entity.CourseId,
 
                 };
+                return model;
+
             }
         }
-        private bool CalculateRating(float ratingLevel)
+        private bool CalculateRating(int courseId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Ratings.Where(r => r.CourseRatings == ratingLevel).ToList();
+                var query = ctx.Ratings.Where(r => r.CourseId == courseId).ToList();
 
                 float averageRating = 0;
                 foreach (var rating in query)
@@ -93,7 +97,7 @@ namespace BlueBadge.Services
                 }
                 averageRating /= query.Count;
 
-                var course = ctx.Courses.Single(p => p.CourseRatings == ratingLevel);
+                var course = ctx.Courses.Single(p => p.CourseId == courseId);
                 course.CourseRatings = averageRating;
 
                 return ctx.SaveChanges() == 1;

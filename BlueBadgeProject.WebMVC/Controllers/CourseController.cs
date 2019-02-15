@@ -54,6 +54,11 @@ namespace BlueBadgeProject.WebMVC.Controllers
             var ctx = new CourseService();
             var model = ctx.GetCourseByID(id);
 
+            var ratingService = new CourseRatingService(Guid.Parse(User.Identity.GetUserId()));
+            var ratings = ratingService.GetRatingsByCourseId(id);
+
+            ViewBag.Ratings = ratings;
+
             return View(model);
         }
 

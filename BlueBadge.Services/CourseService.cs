@@ -59,9 +59,9 @@ namespace BlueBadge.Services
                     ctx
                     .Courses
                     .FirstOrDefault(p => p.CourseId == courseId); //&& p.PlayerId == _userId);
-                return
+                
               
-                    new CourseDetail
+                    var model = new CourseDetail
                 {
                     CourseId = entity.CourseId,
                     CourseName = entity.CourseName,
@@ -71,6 +71,7 @@ namespace BlueBadge.Services
                     CoursePar = entity.CoursePar,
                     CourseRating = entity.CourseRatings
                 };
+                return model;
             
             }
         }

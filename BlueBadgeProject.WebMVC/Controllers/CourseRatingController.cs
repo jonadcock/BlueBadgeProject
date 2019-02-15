@@ -14,10 +14,10 @@ namespace BlueBadgeProject.WebMVC.Controllers
         // GET: CourseRating
         public ActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new CourseRatingService(userId);
-            var model = service.GetRatings();
-            return View(model);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            //var service = new CourseRatingService(userId);
+            //var model = service.GetRatings();
+            return View();
         }
 
         public ActionResult Create()
@@ -43,11 +43,13 @@ namespace BlueBadgeProject.WebMVC.Controllers
 
             if (service.CreateRating(model))
             {
-                TempData["SaveResult"] = "Your rating has been added.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Course");
             }
 
-            ModelState.AddModelError("", "Rating could not be added at this time.");
+            var courseService = new CourseService();
+            var courseList = courseService.GetCourses();
+
+            ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
 
             return View(model);
         }

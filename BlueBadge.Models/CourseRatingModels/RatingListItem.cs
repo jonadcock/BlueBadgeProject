@@ -17,7 +17,5 @@ namespace BlueBadge.Models.CourseRatingModels
         public float CourseRatings { get; set; }
 
         public DateTime DatePlayed { get; set; }
-
-        public override string ToString() => CourseName;
     }
 }

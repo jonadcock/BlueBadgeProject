@@ -57,21 +57,9 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseRating.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201902141939193_InitialCreate.cs" />
-    <Compile Include="Migrations\201902141939193_InitialCreate.Designer.cs">
-      <DependentUpon>201902141939193_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902142115113_update5.cs" />
-    <Compile Include="Migrations\201902142115113_update5.Designer.cs">
-      <DependentUpon>201902142115113_update5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902122014585_secondarymigrationadd.cs" />
-    <Compile Include="Migrations\201902122014585_secondarymigrationadd.Designer.cs">
-      <DependentUpon>201902122014585_secondarymigrationadd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902132005583_player.cs" />
-    <Compile Include="Migrations\201902132005583_player.Designer.cs">
-      <DependentUpon>201902132005583_player.cs</DependentUpon>
+    <Compile Include="Migrations\201902151430370_update7.cs" />
+    <Compile Include="Migrations\201902151430370_update7.Designer.cs">
+      <DependentUpon>201902151430370_update7.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
@@ -80,20 +68,60 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Scripts\jquery-1.12.4.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902141939193_InitialCreate.resx">
-      <DependentUpon>201902141939193_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902151430370_update7.resx">
+      <DependentUpon>201902151430370_update7.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902142115113_update5.resx">
-      <DependentUpon>201902142115113_update5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902122014585_secondarymigrationadd.resx">
-      <DependentUpon>201902122014585_secondarymigrationadd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902132005583_player.resx">
-      <DependentUpon>201902132005583_player.cs</DependentUpon>
-    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

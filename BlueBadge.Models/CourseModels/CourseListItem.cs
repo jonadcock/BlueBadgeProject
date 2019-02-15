@@ -21,8 +21,5 @@ namespace BlueBadge.Models.CourseModels
         public int CoursePar { get; set; }
 
         public float CourseRating { get; set; }
-
-        public override string ToString() => CourseName;
-
     }
 }
