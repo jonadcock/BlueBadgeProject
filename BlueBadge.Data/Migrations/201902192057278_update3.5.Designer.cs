@@ -7,13 +7,13 @@ namespace BlueBadge.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class update7 : IMigrationMetadata
+    public sealed partial class update35 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update7));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update35));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902151430370_update7"; }
+            get { return "201902192057278_update3.5"; }
         }
         
         string IMigrationMetadata.Source

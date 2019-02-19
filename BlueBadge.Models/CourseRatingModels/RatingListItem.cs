@@ -10,12 +10,14 @@ namespace BlueBadge.Models.CourseRatingModels
     {
         public int CourseRatingId { get; set; }
 
-        public Guid PlayerId { get; set; }
+        public int PlayerId { get; set; }
 
         public string CourseName { get; set; }
 
         public float CourseRatings { get; set; }
 
         public DateTime DatePlayed { get; set; }
+
+        public int CourseId { get; set; }
     }
 }

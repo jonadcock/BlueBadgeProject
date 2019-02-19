@@ -57,9 +57,9 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseRating.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201902151430370_update7.cs" />
-    <Compile Include="Migrations\201902151430370_update7.Designer.cs">
-      <DependentUpon>201902151430370_update7.cs</DependentUpon>
+    <Compile Include="Migrations\201902192057278_update3.5.cs" />
+    <Compile Include="Migrations\201902192057278_update3.5.Designer.cs">
+      <DependentUpon>201902192057278_update3.5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
@@ -69,11 +69,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.12.4.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902151430370_update7.resx">
-      <DependentUpon>201902151430370_update7.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\accordion.css" />
@@ -122,6 +117,11 @@
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902192057278_update3.5.resx">
+      <DependentUpon>201902192057278_update3.5.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

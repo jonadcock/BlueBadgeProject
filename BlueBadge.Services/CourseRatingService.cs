@@ -22,10 +22,11 @@ namespace BlueBadge.Services
             var rating = new CourseRating
             {
                 CourseId = model.CourseId,
-                CourseName = model.CourseName,
                 CourseRatings = model.CourseRatings,
+                PlayerId = model.PlayerId,
                 DatePlayed = model.DatePlayed,
-                OwnerID = _userId,
+                OwnerID = _userId
+                
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -40,50 +41,87 @@ namespace BlueBadge.Services
             }
         }
 
-        public IEnumerable<RatingListItem> GetRatingsByCourseId(int courseId)
+        public IEnumerable<RatingListItem> GetRatings()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Ratings
-                    .Where(p => p.CourseId == courseId)
                     .Select(
                         p =>
                         new RatingListItem
                         {
                             CourseRatingId = p.CourseRatingId,
-                            CourseName = p.CourseName,
+                            CourseId = p.Course.CourseId,
+                            CourseName = p.Course.CourseName,
                             CourseRatings = p.CourseRatings,
                             DatePlayed = p.DatePlayed,
-                        });
+                            PlayerId = p.Player.PlayerId,
+                        }).ToArray();
                 return query;
             }
         }
 
-        public CourseRatingDetail GetRatingsByID(int id)
+        public CourseRatingDetail GetRatingByID(int courseRatingId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Ratings
-                    .Single(p => p.CourseRatingId == id);
+                    .FirstOrDefault(p => p.CourseRatingId == courseRatingId);
                 
 
                 var model = new CourseRatingDetail
                 {
                     CourseRatingId = entity.CourseRatingId,
-                    CourseName = entity.CourseName,
-                    CourseRatings = entity.CourseRatings,
+                    CourseName = entity.Course.CourseName,
                     DatePlayed = entity.DatePlayed,
-                    CourseId = entity.CourseId,
+                    CourseId = entity.Course.CourseId,
+                    PlayerId = entity.Player.PlayerId
 
                 };
                 return model;
-
             }
         }
+
+        public bool EditRating(CourseRatingEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Ratings.FirstOrDefault(p => p.CourseRatingId == model.CourseRatingId);
+
+                entity.CourseRatingId = model.CourseRatingId;
+                entity.PlayerId = model.PlayerId;
+                entity.CourseRatings = model.CourseRatings;
+                entity.DatePlayed = model.DatePlayed;
+                entity.CourseId = model.CourseId;
+                entity.CourseName = model.CourseName;
+                
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        //public CourseRatingDetail GetRatings(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity = ctx.Ratings.Single(r => r.CourseRatingId == id)
+
+        //        var model = new CourseRatingDetail
+        //        {
+        //            CourseRatingId = entity.CourseRatingId,
+        //            CourseId = entity.CourseId,
+        //            CourseName = entity.CourseName,
+        //            DatePlayed = entity.DatePlayed,
+        //            CourseRatings = entity.CourseRatings
+
+        //        };
+        //        return model;
+        //    }
+        //}
+
         private bool CalculateRating(int courseId)
         {
             using (var ctx = new ApplicationDbContext())

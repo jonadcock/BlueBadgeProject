@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlueBadge.Data
+namespace BlueBadge.Models.CourseRatingModels
 {
-    public class CourseRating
+    public class CourseRatingEdit
     {
-        [Key]
+        [Required]
         public int CourseRatingId { get; set; }
 
         [Required]
@@ -19,10 +19,10 @@ namespace BlueBadge.Data
         public int PlayerId { get; set; }
 
         [Required]
+        [RangeAttribute(1, 5, ErrorMessage = "Please enter a number between 1 and 5.")]
         public float CourseRatings { get; set; }
- 
+
         [Required]
-        [Display(Name = "Date of Playthrough")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy")]
         public DateTime DatePlayed { get; set; }
 
@@ -31,9 +31,5 @@ namespace BlueBadge.Data
 
         [Required]
         public string CourseName { get; set; }
-
-        public virtual Course Course { get; set; }
-        public virtual Player Player { get; set; }
-
     }
 }

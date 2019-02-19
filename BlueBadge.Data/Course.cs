@@ -13,7 +13,7 @@ namespace BlueBadge.Data
             public int CourseId { get; set; }
 
             [Required]
-            public Guid PlayerId { get; set; }
+            public int PlayerId { get; set; }
 
             [Required]
             public string CourseName { get; set; }

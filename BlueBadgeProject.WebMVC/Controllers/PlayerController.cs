@@ -15,8 +15,8 @@ namespace BlueBadgeProject.WebMVC.Controllers
         // GET: Player
         public ActionResult Index()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlayerService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new PlayerService();
             var model = service.GetPlayers();
             return View(model);
         }
@@ -123,7 +123,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
         private PlayerService CreatePlayerService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlayerService(userId);
+            var service = new PlayerService();
             return service;
         }
     }

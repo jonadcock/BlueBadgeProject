@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -26,32 +27,39 @@
         <th>
             @Html.DisplayNameFor(model => model.DatePlayed)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseRatingId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseRatings)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatePlayed)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CourseRatings }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.CourseRatings  }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CourseRatings  })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseRatingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseRatings)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePlayed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseRatingId }) |
+                @Html.ActionLink("Details", "Detail", new { id = item.CourseRatingId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseRatingId })
+            </td>
+        </tr>
+    }
 
 </table>

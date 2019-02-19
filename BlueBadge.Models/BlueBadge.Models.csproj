@@ -81,6 +81,7 @@
     <Compile Include="CourseModels\CourseListItem.cs" />
     <Compile Include="CourseRatingModels\CourseRatingCreate.cs" />
     <Compile Include="CourseRatingModels\CourseRatingDetail.cs" />
+    <Compile Include="CourseRatingModels\CourseRatingEdit.cs" />
     <Compile Include="CourseRatingModels\RatingListItem.cs" />
     <Compile Include="PlayerModels\PlayerCreate.cs" />
     <Compile Include="PlayerModels\PlayerDetail.cs" />

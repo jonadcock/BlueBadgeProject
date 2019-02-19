@@ -296,8 +296,10 @@
     <Content Include="Views\Player\Edit.cshtml" />
     <Content Include="Views\Player\Delete.cshtml" />
     <Content Include="Views\Player\Details.cshtml" />
-    <Content Include="Views\CourseRating\Index.cshtml" />
     <Content Include="Views\CourseRating\Create.cshtml" />
+    <Content Include="Views\CourseRating\Index.cshtml" />
+    <Content Include="Views\CourseRating\Detail.cshtml" />
+    <Content Include="Views\CourseRating\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

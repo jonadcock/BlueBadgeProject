@@ -55,7 +55,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
             var model = ctx.GetCourseByID(id);
 
             var ratingService = new CourseRatingService(Guid.Parse(User.Identity.GetUserId()));
-            var ratings = ratingService.GetRatingsByCourseId(id);
+            var ratings = ratingService.GetRatingByID(id);
 
             ViewBag.Ratings = ratings;
 
@@ -100,7 +100,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your note could not be editted.");
+            ModelState.AddModelError("", "Your note could not be updated.");
             return View();
         }
 
