@@ -21,8 +21,5 @@ namespace BlueBadge.Models.CourseRatingModels
 
         [Required]
         public int PlayerId { get; set; }
-
-        [Required]
-        public string CourseName { get; set; }
     }
 }

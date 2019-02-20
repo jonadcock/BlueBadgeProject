@@ -10,12 +10,6 @@ namespace BlueBadge.Services
 {
     public class PlayerService
     {
-        //private readonly Guid _userId;
-
-        //public PlayerService(Guid userId)
-        //{
-        //    _userId = userId;
-        //}
 
         public bool CreatePlayer(PlayerCreate model)
         {
@@ -39,7 +33,6 @@ namespace BlueBadge.Services
                 var query =
                     ctx
                     .Players
-               
                     .Select(
                         p =>
                         new PlayerListItem

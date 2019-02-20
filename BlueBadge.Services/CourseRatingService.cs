@@ -19,14 +19,13 @@ namespace BlueBadge.Services
 
         public bool CreateRating(CourseRatingCreate model)
         {
-            var rating = new CourseRating
+            var rating = new CourseRating()
             {
                 CourseId = model.CourseId,
                 CourseRatings = model.CourseRatings,
                 PlayerId = model.PlayerId,
                 DatePlayed = model.DatePlayed,
                 OwnerID = _userId
-                
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -58,6 +57,7 @@ namespace BlueBadge.Services
                             CourseRatings = p.CourseRatings,
                             DatePlayed = p.DatePlayed,
                             PlayerId = p.Player.PlayerId,
+                            //PlayerName = p.Player.PlayerName,
                         }).ToArray();
                 return query;
             }
@@ -78,6 +78,7 @@ namespace BlueBadge.Services
                     CourseRatingId = entity.CourseRatingId,
                     CourseName = entity.Course.CourseName,
                     DatePlayed = entity.DatePlayed,
+                    CourseRatings = entity.CourseRatings,
                     CourseId = entity.Course.CourseId,
                     PlayerId = entity.Player.PlayerId
 
@@ -97,7 +98,7 @@ namespace BlueBadge.Services
                 entity.CourseRatings = model.CourseRatings;
                 entity.DatePlayed = model.DatePlayed;
                 entity.CourseId = model.CourseId;
-                entity.CourseName = model.CourseName;
+
                 
 
                 return ctx.SaveChanges() == 1;

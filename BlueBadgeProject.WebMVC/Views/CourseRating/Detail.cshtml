@@ -19,22 +19,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CourseRatings)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CourseRatings)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CourseId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CourseId)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CourseName)
         </dt>
 
@@ -51,6 +35,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.CourseRatings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseRatings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseId)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PlayerId)
         </dt>
 
@@ -61,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseRatingId }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

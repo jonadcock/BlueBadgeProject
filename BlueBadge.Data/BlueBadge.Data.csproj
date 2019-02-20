@@ -61,6 +61,14 @@
     <Compile Include="Migrations\201902192057278_update3.5.Designer.cs">
       <DependentUpon>201902192057278_update3.5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902201603325_courseratingchange.cs" />
+    <Compile Include="Migrations\201902201603325_courseratingchange.Designer.cs">
+      <DependentUpon>201902201603325_courseratingchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902202028075_data.cs" />
+    <Compile Include="Migrations\201902202028075_data.Designer.cs">
+      <DependentUpon>201902202028075_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +129,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902192057278_update3.5.resx">
       <DependentUpon>201902192057278_update3.5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902201603325_courseratingchange.resx">
+      <DependentUpon>201902201603325_courseratingchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902202028075_data.resx">
+      <DependentUpon>201902202028075_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

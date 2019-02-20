@@ -23,7 +23,7 @@ namespace BlueBadge.Models.CourseRatingModels
         public float CourseRatings { get; set; }
 
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy")]
+        //[DisplayFormatAttribute(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy")]
         public DateTime DatePlayed { get; set; }
 
         [Required]

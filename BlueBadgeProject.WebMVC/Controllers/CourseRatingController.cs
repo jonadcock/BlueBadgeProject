@@ -21,6 +21,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
             return View(model);
         }
 
+        //GET Create
         public ActionResult Create()
         {
 
@@ -43,10 +44,15 @@ namespace BlueBadgeProject.WebMVC.Controllers
 
             if (!ModelState.IsValid)
             {
-                var courseService = new CourseService();
-                var courseList = courseService.GetCourses();
+                //var courseService = new CourseService();
+                //var courseList = courseService.GetCourses();
 
-                ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
+                //ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
+
+                //var playerService = new PlayerService();
+                //var playerList = playerService.GetPlayers();
+
+                //ViewBag.PlayerId = new SelectList(playerList, "PlayerId", "PlayerName");
                 return View(model);
             }
 
@@ -58,7 +64,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
             //var courseService = new CourseService();
             //var courseList = courseService.GetCourses();
             //ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
-
+            ModelState.AddModelError("", "Rating could not be created.");
             return View(model);
         }
 
@@ -70,7 +76,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
 
             var ratingService = new CourseRatingService(Guid.Parse(User.Identity.GetUserId()));
          
-
             var ratings = ratingService.GetRatingByID(id);
 
             ViewBag.Ratings = ratings;
@@ -81,6 +86,16 @@ namespace BlueBadgeProject.WebMVC.Controllers
         //GET: Course/Edit
         public ActionResult Edit(int id)
         {
+
+            var courseService = new CourseService();
+            var courseList = courseService.GetCourses();
+
+            ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
+
+            var playerService = new PlayerService();
+            var playerList = playerService.GetPlayers();
+
+            ViewBag.PlayerId = new SelectList(playerList, "PlayerId", "PlayerName");
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CourseRatingService(userId);
             var detail = service.GetRatingByID(id);
@@ -92,7 +107,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
                     CourseRatings = detail.CourseRatings,
                     DatePlayed = detail.DatePlayed,
                     CourseId = detail.CourseId,
-                    CourseName = detail.CourseName
                 };
             return View(model);
         }
