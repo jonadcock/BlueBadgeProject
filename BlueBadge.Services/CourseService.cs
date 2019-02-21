@@ -21,7 +21,6 @@ namespace BlueBadge.Services
                 CoursePar = model.CoursePar
             };
 
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Courses.Add(course);
@@ -58,10 +57,9 @@ namespace BlueBadge.Services
                 var entity =
                     ctx
                     .Courses
-                    .FirstOrDefault(p => p.CourseId == courseId); //&& p.PlayerId == _userId);
-                
+                    .FirstOrDefault(p => p.CourseId == courseId);
               
-                    var model = new CourseDetail
+                var model = new CourseDetail
                 {
                     CourseId = entity.CourseId,
                     CourseName = entity.CourseName,
@@ -72,7 +70,6 @@ namespace BlueBadge.Services
                     CourseRating = entity.CourseRatings
                 };
                 return model;
-            
             }
         }
         
@@ -80,7 +77,7 @@ namespace BlueBadge.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Courses.FirstOrDefault(p => p.CourseId == model.CourseId);
+                var entity = ctx.Courses.FirstOrDefault(p => p.CourseName == model.CourseName);
 
                 entity.CourseName = model.CourseName;
                 entity.LocationCity = model.LocationCity;
@@ -102,22 +99,5 @@ namespace BlueBadge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        //private float CalculateRating(int courseName)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query = ctx.Ratings.Where(r => r.CourseName == courseName).ToList();
-
-        //        float totalRating = 0;
-        //        foreach(var rating in query)
-        //        {
-        //            totalRating += rating.CourseRatings;
-        //        }
-        //        totalRating /= query.Count;
-
-        //        return totalRating;
-        //    }
-        //}
     }
 }

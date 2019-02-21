@@ -15,7 +15,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
         // GET: Course
         public ActionResult Index()
         {
-     
             var service = new CourseService();
             var model = service.GetCourses();
             return View(model);
@@ -27,6 +26,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
             return View();
         }
 
+        //POST: Course/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CourseCreate model)
@@ -55,7 +55,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
             var model = ctx.GetCourseByID(id);
 
             var ratingService = new CourseRatingService(Guid.Parse(User.Identity.GetUserId()));
-            var ratings = ratingService.GetRatingByID(id);
+            var ratings = ratingService.GetRatingsByCourseID(id);
 
             ViewBag.Ratings = ratings;
 
@@ -70,7 +70,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
             var model =
                 new CourseEdit
                 {
-                    CourseId = detail.CourseId,
                     CourseName = detail.CourseName,
                     LocationCity = detail.LocationCity,
                     LocationState = detail.LocationState,
@@ -86,21 +85,15 @@ namespace BlueBadgeProject.WebMVC.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(model.CourseId != id)
-            {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(model);
-            }
-
             var service = new CourseService();
 
             if (service.EditCourse(model))
             {
-                TempData["SaveResult"] = "Your note was updated.";
+                TempData["SaveResult"] = "Your course was updated.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your note could not be updated.");
+            ModelState.AddModelError("", "Your course could not be updated.");
             return View();
         }
 
@@ -126,14 +119,5 @@ namespace BlueBadgeProject.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
-
-
-        //private CourseService CreateCourseService()
-        //{
-        //    var userId = Guid.Parse(User.Identity.GetUserId());
-        //    var service = new CourseService(userId);
-        //    return service;
-        //}
-
     }
 }

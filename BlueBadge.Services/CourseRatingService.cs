@@ -57,7 +57,31 @@ namespace BlueBadge.Services
                             CourseRatings = p.CourseRatings,
                             DatePlayed = p.DatePlayed,
                             PlayerId = p.Player.PlayerId,
-                            //PlayerName = p.Player.PlayerName,
+                            PlayerName = p.Player.PlayerName,
+                        }).ToArray();
+                return query;
+            }
+        }
+
+        public  IEnumerable<RatingListItem> GetRatingsByCourseID(int courseId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Ratings
+                    .Where(p => p.CourseId == courseId)
+                    .Select(
+                        p =>
+                        new RatingListItem
+                        {
+                            CourseRatingId = p.CourseRatingId,
+                            CourseId = p.Course.CourseId,
+                            CourseName = p.Course.CourseName,
+                            CourseRatings = p.CourseRatings,
+                            DatePlayed = p.DatePlayed,
+                            PlayerId = p.Player.PlayerId,
+                            PlayerName = p.Player.PlayerName,
                         }).ToArray();
                 return query;
             }
@@ -71,7 +95,6 @@ namespace BlueBadge.Services
                     ctx
                     .Ratings
                     .FirstOrDefault(p => p.CourseRatingId == courseRatingId);
-                
 
                 var model = new CourseRatingDetail
                 {
@@ -80,8 +103,8 @@ namespace BlueBadge.Services
                     DatePlayed = entity.DatePlayed,
                     CourseRatings = entity.CourseRatings,
                     CourseId = entity.Course.CourseId,
-                    PlayerId = entity.Player.PlayerId
-
+                    PlayerId = entity.Player.PlayerId,
+                    PlayerName = entity.Player.PlayerName,
                 };
                 return model;
             }
@@ -91,7 +114,7 @@ namespace BlueBadge.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Ratings.FirstOrDefault(p => p.CourseRatingId == model.CourseRatingId);
+                var entity = ctx.Ratings.Single(p => p.CourseRatingId == model.CourseRatingId);
 
                 entity.CourseRatingId = model.CourseRatingId;
                 entity.PlayerId = model.PlayerId;
@@ -99,29 +122,24 @@ namespace BlueBadge.Services
                 entity.DatePlayed = model.DatePlayed;
                 entity.CourseId = model.CourseId;
 
-                
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteRating(int courseRatingId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ratings
+                    .Single(r => r.CourseRatingId == courseRatingId && r.OwnerID == _userId);
+
+                ctx.Ratings.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
         }
-        //public CourseRatingDetail GetRatings(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity = ctx.Ratings.Single(r => r.CourseRatingId == id)
-
-        //        var model = new CourseRatingDetail
-        //        {
-        //            CourseRatingId = entity.CourseRatingId,
-        //            CourseId = entity.CourseId,
-        //            CourseName = entity.CourseName,
-        //            DatePlayed = entity.DatePlayed,
-        //            CourseRatings = entity.CourseRatings
-
-        //        };
-        //        return model;
-        //    }
-        //}
 
         private bool CalculateRating(int courseId)
         {

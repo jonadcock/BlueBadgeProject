@@ -44,15 +44,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
 
             if (!ModelState.IsValid)
             {
-                //var courseService = new CourseService();
-                //var courseList = courseService.GetCourses();
-
-                //ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
-
-                //var playerService = new PlayerService();
-                //var playerList = playerService.GetPlayers();
-
-                //ViewBag.PlayerId = new SelectList(playerList, "PlayerId", "PlayerName");
                 return View(model);
             }
 
@@ -61,9 +52,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
                 return RedirectToAction("Index", "Course");
             }
 
-            //var courseService = new CourseService();
-            //var courseList = courseService.GetCourses();
-            //ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
             ModelState.AddModelError("", "Rating could not be created.");
             return View(model);
         }
@@ -87,15 +75,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
         public ActionResult Edit(int id)
         {
 
-            var courseService = new CourseService();
-            var courseList = courseService.GetCourses();
-
-            ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
-
-            var playerService = new PlayerService();
-            var playerList = playerService.GetPlayers();
-
-            ViewBag.PlayerId = new SelectList(playerList, "PlayerId", "PlayerName");
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CourseRatingService(userId);
             var detail = service.GetRatingByID(id);
@@ -108,6 +87,18 @@ namespace BlueBadgeProject.WebMVC.Controllers
                     DatePlayed = detail.DatePlayed,
                     CourseId = detail.CourseId,
                 };
+
+
+            var courseService = new CourseService();
+            var courseList = courseService.GetCourses();
+
+            ViewBag.CourseId = new SelectList(courseList, "CourseId", "CourseName");
+
+            var playerService = new PlayerService();
+            var playerList = playerService.GetPlayers();
+
+            ViewBag.PlayerId = new SelectList(playerList, "PlayerId", "PlayerName");
+
             return View(model);
         }
 
@@ -134,6 +125,29 @@ namespace BlueBadgeProject.WebMVC.Controllers
 
             ModelState.AddModelError("", "Your rating could not be updated");
                 return View();
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var srv = CreateRatingService();
+            var model = srv.GetRatingByID(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRating(int id)
+        {
+            var service = CreateRatingService();
+
+            service.DeleteRating(id);
+
+            TempData["SaveResult"] = "Your note was deleted";
+
+            return RedirectToAction("Index");       
         }
 
         private CourseRatingService CreateRatingService()

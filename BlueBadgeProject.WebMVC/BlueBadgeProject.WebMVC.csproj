@@ -290,7 +290,6 @@
     <Content Include="Views\Course\Create.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\Detail.cshtml" />
-    <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Player\Create.cshtml" />
@@ -298,7 +297,9 @@
     <Content Include="Views\Player\Delete.cshtml" />
     <Content Include="Views\Player\Details.cshtml" />
     <Content Include="Views\CourseRating\Create.cshtml" />
+    <Content Include="Views\CourseRating\Delete.cshtml" />
     <Content Include="Views\CourseRating\Index.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\CourseRating\Edit.cshtml" />
     <Content Include="Views\CourseRating\Detail.cshtml" />
   </ItemGroup>

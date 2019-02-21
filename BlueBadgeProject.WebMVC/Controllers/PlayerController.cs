@@ -15,18 +15,18 @@ namespace BlueBadgeProject.WebMVC.Controllers
         // GET: Player
         public ActionResult Index()
         {
-            //var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new PlayerService();
             var model = service.GetPlayers();
             return View(model);
         }
 
-        //GET: Create
+        //GET: Create:Player
         public ActionResult Create()
         {
             return View();
         }
 
+        //POST: Create:Player
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PlayerCreate model)
@@ -46,7 +46,6 @@ namespace BlueBadgeProject.WebMVC.Controllers
             ModelState.AddModelError("", "Player could not be created.");
 
             return View(model);
-
         }
 
         //GET: Players/Detail
@@ -58,7 +57,7 @@ namespace BlueBadgeProject.WebMVC.Controllers
             return View(model);
         }
 
-        //GET: Course/Edit
+        //GET: Player/Edit
         public ActionResult Edit(int id)
         {
             var service = CreatePlayerService();

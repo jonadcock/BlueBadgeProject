@@ -10,12 +10,15 @@ namespace BlueBadge.Models.PlayerModels
     public class PlayerEdit
     {
         [Required]
+        [Display(Name = "Player ID")]
         public int PlayerId { get; set; }
 
         [Required]
+        [Display(Name = "Player Name")]
         public string PlayerName { get; set; }
 
         [Required]
+        [Display(Name = "Active Since")]
         public int ActiveSince { get; set; }
     }
 }

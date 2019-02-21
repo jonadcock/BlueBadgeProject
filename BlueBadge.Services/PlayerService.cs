@@ -10,7 +10,6 @@ namespace BlueBadge.Services
 {
     public class PlayerService
     {
-
         public bool CreatePlayer(PlayerCreate model)
         {
             Player player = new Player()

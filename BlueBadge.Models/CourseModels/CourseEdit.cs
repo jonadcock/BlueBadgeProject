@@ -9,8 +9,6 @@ namespace BlueBadge.Models.CourseModels
 {
     public class CourseEdit
     {
-        [Required]
-        public int CourseId { get; set; }
 
         [Required]
         public string CourseName { get; set; }

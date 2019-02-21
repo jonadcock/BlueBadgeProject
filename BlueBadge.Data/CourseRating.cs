@@ -25,8 +25,6 @@ namespace BlueBadge.Data
         public float CourseRatings { get; set; }
  
         [Required]
-        //[Display(Name = "Date of Round")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy")]
         public DateTime DatePlayed { get; set; }
         
         public virtual Course Course { get; set; }
