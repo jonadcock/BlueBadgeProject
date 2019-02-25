@@ -10,14 +10,13 @@ namespace BlueBadge.Models.PlayerModels
     public class PlayerCreate
     {
         [Required]
-        [Display(Name = "Player ID")]
+        [Display(Name = "Player Name")]
         public string PlayerName { get; set; }
 
         [Required]
-        [Display(Name = "Player Name")]
+        [Display(Name = "Active Since")]
         public int ActiveSince { get; set; }
 
-        [Display(Name = "Active Since")]
         public override string ToString() => PlayerName;
         }
 }

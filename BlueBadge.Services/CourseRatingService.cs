@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlueBadge.Models.CourseRatingModels;
+using BlueBadge.Contracts;
 
 namespace BlueBadge.Services
 {
-    public class CourseRatingService
+    public class CourseRatingService : ICourseRating
     {
         private readonly Guid _userId;
 
@@ -141,7 +142,7 @@ namespace BlueBadge.Services
             }
         }
 
-        private bool CalculateRating(int courseId)
+        public bool CalculateRating(int courseId)
         {
             using (var ctx = new ApplicationDbContext())
             {

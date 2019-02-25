@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201902202028075_data.Designer.cs">
       <DependentUpon>201902202028075_data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902222221048_udae.cs" />
+    <Compile Include="Migrations\201902222221048_udae.Designer.cs">
+      <DependentUpon>201902222221048_udae.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902202028075_data.resx">
       <DependentUpon>201902202028075_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902222221048_udae.resx">
+      <DependentUpon>201902222221048_udae.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

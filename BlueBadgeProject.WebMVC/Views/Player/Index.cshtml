@@ -23,23 +23,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActiveSince)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PlayerID}) |
-            @Html.ActionLink("Details", "Details", new { id=item.PlayerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlayerID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActiveSince)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlayerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlayerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID })
+            </td>
+        </tr>
+    }
 </table>
+    @*<div class="wrapper">
+        <img class="basket17" src="~/Content/App_LocalResources/17-disc-basket.jpg" alt="17 basket" />
+    </div>*@
+

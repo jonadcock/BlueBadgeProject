@@ -1,4 +1,5 @@
-﻿using BlueBadge.Data;
+﻿using BlueBadge.Contracts;
+using BlueBadge.Data;
 using BlueBadge.Models.PlayerModels;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BlueBadge.Services
 {
-    public class PlayerService
+    public class PlayerService : IPlayer
     {
         public bool CreatePlayer(PlayerCreate model)
         {

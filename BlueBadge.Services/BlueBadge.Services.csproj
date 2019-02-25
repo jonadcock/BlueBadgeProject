@@ -86,6 +86,10 @@
     <None Include="Scripts\jquery-1.12.4.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlueBadge.Contracts\BlueBadge.Contracts.csproj">
+      <Project>{EC3D4FCE-C49C-473A-964F-692B590C9C5A}</Project>
+      <Name>BlueBadge.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlueBadge.Data\BlueBadge.Data.csproj">
       <Project>{db1376c0-d4c2-464f-9e10-8c49f779999f}</Project>
       <Name>BlueBadge.Data</Name>

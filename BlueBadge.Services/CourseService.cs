@@ -1,4 +1,5 @@
-﻿using BlueBadge.Data;
+﻿using BlueBadge.Contracts;
+using BlueBadge.Data;
 using BlueBadge.Models.CourseModels;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BlueBadge.Services
 {
-    public class CourseService
+    public class CourseService : ICourse
     {
         public bool CreateCourse(CourseCreate model)
         {
