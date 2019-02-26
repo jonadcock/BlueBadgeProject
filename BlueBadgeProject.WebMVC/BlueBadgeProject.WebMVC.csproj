@@ -188,12 +188,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\17-disc-basket.jpg" />
     <Content Include="Content\App_LocalResources\17-disc-basket.jpg" />
     <Content Include="Content\App_LocalResources\LocalAssets\mesker9_basket.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mesker9_basket.jpg" />
+    <Content Include="Content\ndgcfront.jpg" />
+    <Content Include="Content\players.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
